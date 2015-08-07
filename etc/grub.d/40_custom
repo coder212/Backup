@@ -1,0 +1,13 @@
+#!/bin/sh
+exec tail -n +3 $0
+# This file provides an easy way to add custom menu entries.  Simply type the
+# menu entries you want to add after this comment.  Be careful not to change
+# the 'exec tail' line above.
+menuentry "Archgalau iso" {
+   set isofile="/home/brunley/archlinux-2015.01.01-dual.iso"
+   loopback loop (hd0,msdos1)$isofile
+   linux (loop)/arch/boot/x86_64/vmlinuz img_dev=/dev/sda1 img_loop=$isofile archisobasedir=arch archisolabel=ARCH_201501
+   initrd (loop)/arch/boot/x86_64/archiso.img
+   }
+
+
